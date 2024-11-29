@@ -10,47 +10,30 @@ ob_start();
             <div class="card mb-4">
                 <div class="card-header pb-0 mb-3">
                     <div class="row">
-                        <div class="col-md-6 text-end">
-                            <h3 class="mb-0">ملأ البيانات الخاصة الإحصاء العام للسكان والسكنى</h3>
+                        <div class="col-md-12 text-end">
+                            <h4 class="mb-0">المركبات التي خضعت للمراقبة من طرف اللجنة الإقليمية المختلطة</h4>
                         </div>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
                         <form method="POST">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group text-end">
-                                        <label for="example-text-input"
-                                            class="form-control-label text-xl-center">الدواوير / الأحياء
-                                            المحصية</label>
-                                        <input class="form-control text-end" dir="rtl" id="list_douar" name="list_douar"
-                                            type="text" value="" required>
-                                    </div>
-                                    <p class="error-prenom text-danger text-xs error-text"></p>
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-md-4 d-flex">
+                                    <input type="time" class="form-control w-50" name="heure_operation" id="heure_operation">
+                                    <label for="heure_operation" class="col-md-2 col-form-label">وقت العملية</label>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group text-end">
-                                        <label for="example-text-input" class="form-control-label">عدد المساكن
-                                            المحصية</label>
-                                        <input class="form-control text-end" name="nbr_menage" type="number" value=""
-                                            required>
-                                    </div>
+                                <div class="col-md-4 d-flex">
+                                    <input type="date" class="form-control w-50" name="date_operation" id="date_operation">
+                                    <label for="date_operation" class="col-md-2 col-form-label">تاريخ العملية</label>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group text-end">
-                                        <label for="example-text-input" class="form-control-label">عدد الأسر
-                                            المحصية</label>
-                                        <input class="form-control text-end" name="nbr_famille" type="number" value=""
-                                            required>
-                                    </div>
+                            </div>
+                            <div class="row d-flex text-end">
+                                <div class="col-md-12 text-end">
+                                    <h6>نوع سير المركبة</h6>
                                 </div>
-                                <div class="col-md-12">
-                                    <div class="form-group text-end">
-                                        <label for="example-text-input" class="form-control-label">ملاحظات</label>
-                                        <textarea class="form-control text-end" dir="rtl" name="observations"
-                                            rows="3"></textarea>
-                                    </div>
+                                <div class="col-md-4 d-flex">
+                                    
                                 </div>
                             </div>
 

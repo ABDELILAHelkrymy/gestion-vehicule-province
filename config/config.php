@@ -2,7 +2,7 @@
 
 return [
     'database' => [
-        'dbname' => 'provlaracheCollect',
+        'dbname' => 'vhprovgest',
         'user' => 'root',
         'password' => '',
         'connection' => 'mysql:host=localhost:3306',

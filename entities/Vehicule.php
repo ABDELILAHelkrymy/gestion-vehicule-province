@@ -6,28 +6,86 @@ use core\Entity;
 
 class Vehicule extends Entity
 {
-    protected $id;
-    protected $matricule;
-    protected $modele;
-    protected $typeVehicule;
-    protected $numeroChassis;
-    protected $nombrePlace;
-    protected $nomFabricant;
-    protected $nombreSiege;
-    protected $proprietaire;
-    protected $adresseProprietaire;
-
-    const _TYPE_VEHICULE = [
-        'النقل الحضري',
-        'النقل المدرسي',
-        'النقل بين الجماعات',
-        'نقل المستخدمين لحساب الغير',
-        'النقل بواسطة سيارة الاجرة',
-        'اخر'
-    ];
-
-    public function getTypesVehicule()
-    {
-        return self::_TYPE_VEHICULE;
-    }
+	protected $id;
+	protected $created_at;
+	protected $updated_at;
+	protected $date_operation;
+	protected $heure_operation;
+	protected $type_vehicule;
+	protected $matricule;
+	protected $matricule_confirme_cart_grise;
+	protected $observation_matricule;
+	protected $modele;
+	protected $modele_confirme_cart_grise;
+	protected $observation_modele;
+	protected $numero_chassis;
+	protected $numero_chassis_confirme_cart_grise;
+	protected $observation_numero_chassis;
+	protected $nombre_place;
+	protected $nombre_place_confirme_cart_grise;
+	protected $observation_nombre_place;
+	protected $nom_fabricant;
+	protected $nom_fabricant_confirme_cart_grise;
+	protected $observation_nom_fabricant;
+	protected $nombre_siege;
+	protected $nombre_siege_confirme_cart_grise;
+	protected $observation_nombre_siege;
+	protected $proprietaire;
+	protected $proprietaire_confirme_cart_grise;
+	protected $observation_proprietaire;
+	protected $adresse_proprietaire;
+	protected $adresse_proprietaire_confirme_cart_grise;
+	protected $observation_adresse_proprietaire;
+	protected $carte_grise;
+	protected $observation_carte_grise;
+	protected $assurance;
+	protected $observation_assurance;
+	protected $visite_technique;
+	protected $observation_visite_technique;
+	protected $taxe;
+	protected $observation_taxe;
+	protected $feulle_route;
+	protected $observation_feulle_route;
+	protected $contrat_ordre_transport;
+	protected $observation_contrat_ordre_transport;
+	protected $cin_chauffeur;
+	protected $date_fin_validite_cin;
+	protected $permis_conduire;
+	protected $date_fin_validite_permis;
+	protected $permis_confiance;
+	protected $date_fin_validite_permis_confiance;
+	protected $carte_conducteur;
+	protected $date_fin_validite_carte_conducteur;
+    protected $visite_technique_chauffeur;
+	protected $date_fin_validite_visite_technique;
+	protected $conformite_type_vehicule;
+	protected $conformite_nombre_places;
+	protected $etat_roues_avant;
+	protected $etat_roues_arriere;
+	protected $roue_secours;
+	protected $vitre_protection_avant;
+	protected $fenetre_secours;
+	protected $equipement_vitres_avant_droite;
+	protected $equipement_vitres_avant_gauche;
+	protected $equipement_vitres_arriere_droite;
+	protected $equipement_vitres_arriere_gauche;
+	protected $miroirs_reflecteurs_internes;
+	protected $miroirs_reflecteurs_avant_droite;
+	protected $miroirs_reflecteurs_avant_gauche;
+	protected $essuie_glace_avant;
+	protected $lumieres_vehicule;
+	protected $reflecteurs_arriere_ou_lateraux;
+	protected $signal_lumieres_brouillard;
+	protected $etat_carosserie;
+	protected $siege_cabine_conducteur;
+	protected $sieges_vehicule;
+	protected $ceintures_securite;
+	protected $klaxon;
+	protected $extincteur;
+	protected $trousse_secours;
+	protected $portes;
+	protected $systeme_verrouillage_auto;
+	protected $etat_mecanique;
+	protected $recommandations_vehicule;
+	protected $recommandations_groupe_field;
 }
