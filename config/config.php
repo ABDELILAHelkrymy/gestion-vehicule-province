@@ -15,7 +15,6 @@ return [
         "/" => "home/index",
         "/board" => "board/index",
         "/vehicule/ajouter" => "vehicule/ajouter",
-        "/vehicule/ajouter/document/:id" => "vehicule/ajouterDocument",
-        "/vehicule/ajouter/chauffeur/:id" => "vehicule/ajouterChauffeur",
+        "/vehicule/modifier/:id" => "vehicule/modifier",
     ],
 ];

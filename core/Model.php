@@ -81,6 +81,12 @@ class Model
 
     public function updateById($data)
     {
+        // verify if datas values is an array then convet it to string separated by comma
+        foreach ($data as $key => $value) {
+            if (is_array($value)) {
+                $data[$key] = implode(',', $value);
+            }
+        }
         $sql = "UPDATE $this->table SET ";
         foreach ($data as $key => $value) {
             $sql .= "$key = :$key, ";

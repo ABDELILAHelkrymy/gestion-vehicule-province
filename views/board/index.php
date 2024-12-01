@@ -30,9 +30,46 @@ ob_start();
                                         <th
                                             class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2 text-center">
                                             رقم المركبة</th>
+                                        <th class="text-secondary"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php
+                                    foreach ($vehicules as $vehicule) {
+                                        ?>
+                                        <tr>
+                                            <td class="align-middle text-center">
+
+                                            </td>
+                                            <td class="align-middle text-center">
+
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <p class="text-sm font-weight-bold mb-0">
+                                                    <?php echo $vehicule->getTypeVehicule(); ?>
+                                                </p>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <p class="text-sm font-weight-bold mb-0">
+                                                    <?php echo $vehicule->getNumVehicule(); ?>
+                                                </p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <a href="<?php echo '/vehicule/modifier/' . $vehicule->getId(); ?>"
+                                                    class="text-info font-weight-bold text-md mx-2" id="editCompte">
+                                                    <?php
+                                                    if ($_SESSION['userrole'] === 'gouve') {
+                                                        echo 'عرض';
+                                                    } else {
+                                                        echo 'تعديل';
+                                                    }
+                                                    ?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+                                    ?>
                                 </tbody>
                             </table>
                         </div>

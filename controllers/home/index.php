@@ -2,7 +2,7 @@
 
 $role = $_SESSION['userrole'] ?? null;
 var_dump($role);
-if ($role === 'gouv') {
+if ($role === 'gouve') {
     header('Location: /board');
     exit;
 } else {

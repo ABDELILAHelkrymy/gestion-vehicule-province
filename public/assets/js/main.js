@@ -1129,17 +1129,30 @@ $(document).ready(function () {
 
   handleSearchMaterielByTypeAndSortiDuStock();
 
-  $('.date_collect').on('change', function () {
-    date_collect = $(this).val();
-    window.location.href = `/dashboard?q=${date_collect}`;
+  if ($("#type_vehicule_autre").is(":checked")) {
+    $("#type_vehicule_input_autre").removeAttr("disabled");
+  } else {
+    $("#type_vehicule_input_autre").attr("disabled", "disabled");
+  }
+
+  $("#type_vehicule_autre").on("change", function () {
+    if ($(this).is(":checked")) {
+      $("#type_vehicule_input_autre").removeAttr("disabled");
+    } else {
+      $("#type_vehicule_input_autre").attr("disabled", "disabled");
+    }
   });
 
-  const nbrDistrict = 8;
-  
-const colors = ["bg-primary", "bg-secondary", "bg-success", "bg-info", "bg-warning", "bg-danger", "bg-light", "bg-gradient-success"]
+  $("#type_vehicule").each(function () {
+    $(this).on("change", function () {
+      let selectedValue = $(this).val();
+      $("#type_vehicule_input").attr("disabled", "disabled");
+    });
+  });
 
-  for (let i = 1; i <= nbrDistrict; i++) {
-    $('.bg'+i).addClass('bg-'+i);
-    $('.bg-dark'+i).addClass('bg-'+i+'-dark');
-  }
+  // remove space from recommandations_groupe_field textarea
+  const recommandations_groupe_field = $("#recommandations_groupe_field");
+  recommandations_groupe_field.text(recommandations_groupe_field.text().trim());
+  const recommandations_vehicule = $("#recommandations_vehicule");
+  recommandations_vehicule.text(recommandations_vehicule.text().trim());
 });
