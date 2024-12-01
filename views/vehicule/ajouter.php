@@ -28,8 +28,10 @@ ob_start();
                                     <input type="date" class="form-control" name="date_operation" id="date_operation">
                                 </div>
                                 <div class="col-md-4 text-end">
-                                    <label for="num_vehicule" class="form-label">رقم المركبة</label>
-                                    <input type="text" class="form-control" name="num_vehicule" id="num_vehicule">
+                                    <label for="num_vehicule" class="form-label"><span class="text-danger">*</span>رقم
+                                        المركبة</label>
+                                    <input type="text" class="form-control" name="num_vehicule" id="num_vehicule"
+                                        required>
                                 </div>
                             </div>
 
