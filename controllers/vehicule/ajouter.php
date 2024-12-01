@@ -1,20 +1,26 @@
 <?php
 
-
+use models\VehiculeModel;
+use entities\Vehicule;
 
 function addData($request, $db)
 {
 
     $viewVars = [];
     if ($request->isPost()) {
+        $vehiculeModel = new VehiculeModel($db);
 
-        try {
+        $vehicule = new Vehicule($request->getPost());
 
-            $_SESSION["message"] = "تمت الإضافة بنجاح";
-            header("Location: /dataCollect");
-        } catch (Exception $e) {
-            $_SESSION['error'] = "حدث خطأ أثناء الإضافة";
+        if ($vehicule->getTypeVehicule() === 'اخر') {
+            $vehicule->setTypeVehicule($request->post('type_vehicule_autre'));
         }
+        if ($vehicule->getMatriculeConfirmeCartGrise() === 'نعم') {
+            $vehicule->setMatriculeConfirmeCartGrise(1);
+        } else {
+            $vehicule->setMatriculeConfirmeCartGrise(0);
+        }
+        $vehiculeModel->create($vehicule->toArray());
     }
 
     return $viewVars;

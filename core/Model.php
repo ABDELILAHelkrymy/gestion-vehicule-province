@@ -21,6 +21,12 @@ class Model
 
     public function create($data)
     {
+        // verify if datas values is an array then convet it to string separated by comma
+        foreach ($data as $key => $value) {
+            if (is_array($value)) {
+                $data[$key] = implode(',', $value);
+            }
+        }
         $sql = "INSERT INTO $this->table (";
         foreach ($data as $key => $value) {
             $sql .= "$key, ";
