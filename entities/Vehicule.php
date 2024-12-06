@@ -8,6 +8,7 @@ class Vehicule extends Entity
 {
 	protected $id;
 	protected $createdAt;
+    protected $createdBy;
 	protected $updatedAt;
 	protected $dateOperation;
 	protected $heureOperation;
@@ -102,4 +103,5 @@ class Vehicule extends Entity
 	protected $recommandationsVehicule;
 	protected $recommandationsGroupeField;
 
+    protected $files;
 }

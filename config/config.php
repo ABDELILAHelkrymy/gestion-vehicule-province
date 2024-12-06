@@ -16,5 +16,8 @@ return [
         "/board" => "board/index",
         "/vehicule/ajouter" => "vehicule/ajouter",
         "/vehicule/modifier/:id" => "vehicule/modifier",
+
+        "/downloadFile" => "ajax/DonwloadFile",
+        "/exportVehivule" => "ajax/ExportVehiculeCsvFile",
     ],
 ];

@@ -14,6 +14,8 @@ function modifier($request, $db)
     $vehicule = $vehiculeModel->getById($id);
 
     $viewVars["vehicule"] = $vehicule;
+    $attachements = explode(',', $vehicule->getFiles());
+    $viewVars["attachements"] = $attachements;
 
     if ($request->isPost()) {
         $vehicule = new Vehicule($request->getPost());

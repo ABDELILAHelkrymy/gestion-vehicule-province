@@ -1,6 +1,6 @@
 <?php
 $date = date('Y-m-d');
-$title = $date . " : اليوم";
+$title = "اليوم : " .$date ;
 $route = explode('/', $_SERVER['REQUEST_URI'])[2] ?? '';
 ob_start();
 ?>
@@ -17,25 +17,25 @@ ob_start();
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                             <div class="row d-flex justify-content-center">
-                                <div class="col-md-4 text-end">
-                                    <label for="heure_operation" class="form-label">وقت العملية</label>
-                                    <input type="time" class="form-control" name="heure_operation" id="heure_operation">
-                                </div>
-                                <div class="col-md-4 text-end">
-                                    <label for="date_operation" class="form-label">تاريخ العملية</label>
-                                    <input type="date" class="form-control" name="date_operation" id="date_operation">
-                                </div>
                                 <div class="col-md-4 text-end">
                                     <label for="num_vehicule" class="form-label"><span class="text-danger">*</span>رقم
                                         المركبة</label>
                                     <input type="text" class="form-control" name="num_vehicule" id="num_vehicule"
                                         required>
                                 </div>
+                                <div class="col-md-4 text-end">
+                                    <label for="date_operation" class="form-label">تاريخ العملية</label>
+                                    <input type="date" class="form-control" name="date_operation" id="date_operation">
+                                </div>
+                                <div class="col-md-4 text-end">
+                                    <label for="heure_operation" class="form-label">وقت العملية</label>
+                                    <input type="time" class="form-control" name="heure_operation" id="heure_operation">
+                                </div>
                             </div>
 
-                            <div class="row mt-3 d-flex justify-content-start flex-row-reverse">
+                            <div class="row mt-3 d-flex justify-content-start ">
                                 <div class="col-md-12 text-end">
                                     <h6>نوع سير المركبة</h6>
                                 </div>
@@ -63,7 +63,7 @@ ob_start();
                                     <input type="radio" name="type_vehicule" id="type_vehicule"
                                         value="النقل بواسطة سيارة الاجرة">
                                 </div>
-                                <div class="col-md-4 d-flex flex-row-reverse justify-content-around align-items-center">
+                                <div class="col-md-4 d-flex  justify-content-around align-items-center">
                                     <div>
                                         <label for="type_vehicule" class="form-label">اخر</label>
                                         <input type="radio" name="type_vehicule" id="type_vehicule_autre" value="اخر">
@@ -78,73 +78,73 @@ ob_start();
                                     <h6>الوثائق الخاصة بالمركبة </h6>
                                 </div>
                                 <div class="col-md-6 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
+                                    <div class="row ">
                                         <div class="col-md-6 text-end">
                                             <label for="carte_grise" class="form-label">البطاقة الرمادية</label>
                                             <input type="checkbox" name="carte_grise" id="carte_grise" value="1">
                                         </div>
                                         <div class="col-md-6 text-end d-flex">
+                                            <label for="observation_carte_grise" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_carte_grise"
                                                 id="assuobservation_carte_griserance">
-                                            <label for="observation_carte_grise" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
+                                    <div class="row ">
                                         <div class="col-md-6 text-end">
                                             <label for="assurance" class="form-label">شهادة التأمين</label>
                                             <input type="checkbox" name="assurance" id="assurance" value="1">
                                         </div>
                                         <div class="col-md-6 text-end d-flex">
+                                            <label for="observation_assurance" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_assurance"
                                                 id="observation_assurance">
-                                            <label for="observation_assurance" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
+                                    <div class="row ">
                                         <div class="col-md-6 text-end">
                                             <label for="visite_technique" class="form-label">شهادة الفحص التقني</label>
                                             <input type="checkbox" name="visite_technique" id="visite_technique"
                                                 value="نعم">
                                         </div>
                                         <div class="col-md-6 text-end d-flex">
+                                            <label for="observation_visite_technique" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_visite_technique"
                                                 id="observation_visite_technique">
-                                            <label for="observation_visite_technique" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
+                                    <div class="row ">
                                         <div class="col-md-6 text-end">
                                             <label for="taxe" class="form-label">وصل أداء الضريبة</label>
                                             <input type="checkbox" name="taxe" id="taxe" value="1">
                                         </div>
                                         <div class="col-md-6 text-end d-flex">
+                                            <label for="observation_taxe" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_taxe"
                                                 id="observation_taxe">
-                                            <label for="observation_taxe" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
+                                    <div class="row ">
                                         <div class="col-md-6 text-end">
                                             <label for="feulle_route" class="form-label">ورقة السير</label>
                                             <input type="checkbox" name="feulle_route" id="feulle_route" value="1">
                                         </div>
                                         <div class="col-md-6 text-end d-flex">
+                                            <label for="observation_feulle_route" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_feulle_route"
                                                 id="observation_feulle_route">
-                                            <label for="observation_feulle_route" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
+                                    <div class="row ">
                                         <div class="col-md-6 text-end">
                                             <label for="contrat_ordre_transport" class="form-label">العقد مع الآمر
                                                 بالنقل</label>
@@ -152,11 +152,11 @@ ob_start();
                                                 id="contrat_ordre_transport" value="1">
                                         </div>
                                         <div class="col-md-6 text-end d-flex">
+                                            <label for="observation_contrat_ordre_transport"
+                                                class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control"
                                                 name="observation_contrat_ordre_transport"
                                                 id="observation_contrat_ordre_transport">
-                                            <label for="observation_contrat_ordre_transport"
-                                                class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
@@ -167,8 +167,8 @@ ob_start();
                                     <h6>بيانات المركبة</h6>
                                 </div>
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="matricule" class="form-label">رقم تسجيل المركبة</label>
                                             <input type="text" class="form-control w-60" name="matricule"
                                                 id="matricule">
@@ -186,15 +186,15 @@ ob_start();
                                                 id="matricule_confirme_cart_grise" value="0">
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_matricule" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_matricule"
                                                 id="observation_matricule">
-                                            <label for="observation_matricule" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="numero_chassis" class="form-label">رقم الإطار الحديدي</label>
                                             <input type="text" class="form-control w-60" name="numero_chassis"
                                                 id="numero_chassis">
@@ -212,16 +212,16 @@ ob_start();
                                                 id="numero_chassis_confirme_cart_grise" value="0">
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_matricule" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_matricule"
                                                 id="observation_matricule">
-                                            <label for="observation_matricule" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="nom_fabricant" class="form-label">اسم المصنع</label>
                                             <input type="text" class="form-control w-60" name="nom_fabricant"
                                                 id="nom_fabricant">
@@ -239,16 +239,16 @@ ob_start();
                                                 id="nom_fabricant_confirme_cart_grise" value="0">
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_nom_fabricant" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_nom_fabricant"
                                                 id="observation_nom_fabricant">
-                                            <label for="observation_nom_fabricant" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="modele" class="form-label">النموذج</label>
                                             <input type="text" class="form-control w-60" name="modele" id="modele">
                                         </div>
@@ -265,15 +265,15 @@ ob_start();
                                                 id="modele_confirme_cart_grise" value="0">
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_modele" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_modele"
                                                 id="observation_modele">
-                                            <label for="observation_modele" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="nombre_siege" class="form-label">عدد المقاعد</label>
                                             <input type="text" class="form-control w-60" name="nombre_siege"
                                                 id="nombre_siege">
@@ -291,16 +291,16 @@ ob_start();
                                                 id="nombre_siege_confirme_cart_grise" value="0">
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_nombre_siege" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_nombre_siege"
                                                 id="observation_nombre_siege">
-                                            <label for="observation_nombre_siege" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="proprietaire" class="form-label">اسم المالك</label>
                                             <input type="text" class="form-control w-60" name="proprietaire"
                                                 id="proprietaire">
@@ -318,16 +318,16 @@ ob_start();
                                                 id="proprietaire_confirme_cart_grise" value="0">
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_proprietaire" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_proprietaire"
                                                 id="observation_proprietaire">
-                                            <label for="observation_proprietaire" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="adresse_proprietaire" class="form-label">عنوان المالك</label>
                                             <input type="text" class="form-control w-60" name="adresse_proprietaire"
                                                 id="adresse_proprietaire">
@@ -345,17 +345,17 @@ ob_start();
                                                 id="adresse_proprietaire_confirme_cart_grise" value="0">
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_adresse_proprietaire"
+                                                class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control"
                                                 name="observation_adresse_proprietaire"
                                                 id="observation_adresse_proprietaire">
-                                            <label for="observation_adresse_proprietaire"
-                                                class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row mt-3 flex-row-reverse">
+                            <div class="row mt-3 ">
                                 <div class="col-md-12 text-end">
                                     <h6>سائق المركبة </h6>
                                 </div>
@@ -414,17 +414,17 @@ ob_start();
                                 </div>
                             </div>
 
-                            <div class="row mt-3 flex-row-reverse">
+                            <div class="row mt-3 ">
                                 <div class="col-md-12 text-end">
                                     <h6>نقط المعاينة التي تمت مراقبتها </h6>
                                 </div>
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="conformite_type_vehicule" class="form-label">تطابق بين مواصفات
                                             المركبة و
                                             نوع السير المسجل </label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="radio" name="conformite_type_vehicule"
                                             id="conformite_type_vehicule" value="نعم">
                                         <label for="conformite_type_vehicule">نعم</label>
@@ -439,13 +439,13 @@ ob_start();
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="conformite_nombre_places" class="form-label">تطابق عدد المقاعد مع
                                             وثائق
                                             المركبة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="radio" name="conformite_nombre_places"
                                             id="conformite_nombre_places" value="نعم">
                                         <label for="conformite_nombre_places">نعم</label>
@@ -460,11 +460,11 @@ ob_start();
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="etat_roues_avant" class="form-label">العجلات الأمامية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="radio" name="etat_roues_avant" id="etat_roues_avant"
                                             value="حالة جيدة">
                                         <label for="etat_roues_avant">حالة جيدة</label>
@@ -478,11 +478,11 @@ ob_start();
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="etat_roues_arriere" class="form-label">العجلات الخلفية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="radio" name="etat_roues_arriere" id="etat_roues_arriere"
                                             value="حالة جيدة">
                                         <label for="etat_roues_arriere">حالة جيدة</label>
@@ -496,11 +496,11 @@ ob_start();
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="roue_secours" class="form-label">العجلة الاحتياطية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="roue_secours[]" id="roue_secours" value="موجودة">
                                         <label for="roue_secours">موجودة </label>
                                         <input type="checkbox" name="roue_secours[]" id="roue_secours"
@@ -518,12 +518,12 @@ ob_start();
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="vitre_protection_avant" class="form-label"> الزجاجة الواقية الأمامية
                                         </label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="vitre_protection_avant[]"
                                             id="vitre_protection_avant_good" value="حالة جيدة">
                                         <label for="vitre_protection_avant_good">حالة جيدة</label>
@@ -551,11 +551,11 @@ ob_start();
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="fenetre_secours" class="form-label">نوافذ الإغاثة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="fenetre_secours[]" id="fenetre_secours_exist"
                                             value="موجودة">
                                         <label for="fenetre_secours_exist">موجودة</label>
@@ -587,12 +587,12 @@ ob_start();
                                 </div>
 
                                 <!-- التجهيزات الزجاجية الأخرى الأمامية في اليمين -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="equipement_vitres_avant_droite" class="form-label">التجهيزات
                                             الزجاجية الأخرى الأمامية في اليمين</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="equipement_vitres_avant_droite[]"
                                             id="equipement_vitres_avant_droite_exist" value="موجودة">
                                         <label for="equipement_vitres_avant_droite_exist">موجودة</label>
@@ -618,12 +618,12 @@ ob_start();
                                 </div>
 
                                 <!-- التجهيزات الزجاجية الأخرى الأمامية في اليسار -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="equipement_vitres_avant_gauche" class="form-label">التجهيزات
                                             الزجاجية الأخرى الأمامية في اليسار</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="equipement_vitres_avant_gauche[]"
                                             id="equipement_vitres_avant_gauche_exist" value="موجودة">
                                         <label for="equipement_vitres_avant_gauche_exist">موجودة</label>
@@ -650,12 +650,12 @@ ob_start();
 
                                 <!-- التجهيزات الزجاجية الأخرى الخلفية في اليمين -->
                                 <!-- التجهيزات الزجاجية الأخرى الخلفية في اليمين -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="equipement_vitres_arriere_droite" class="form-label">التجهيزات
                                             الزجاجية الأخرى الخلفية في اليمين</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="equipement_vitres_arriere_droite[]"
                                             id="equipement_vitres_arriere_droite_exist" value="موجودة">
                                         <label for="equipement_vitres_arriere_droite_exist">موجودة</label>
@@ -682,12 +682,12 @@ ob_start();
 
                                 <!-- التجهيزات الزجاجية الأخرى الخلفية في اليسار -->
                                 <!-- التجهيزات الزجاجية الأخرى الخلفية في اليسار -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="equipement_vitres_arriere_gauche" class="form-label">التجهيزات
                                             الزجاجية الأخرى الخلفية في اليسار</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="equipement_vitres_arriere_gauche[]"
                                             id="equipement_vitres_arriere_gauche_exist" value="موجودة">
                                         <label for="equipement_vitres_arriere_gauche_exist">موجودة</label>
@@ -715,12 +715,12 @@ ob_start();
 
                                 <!-- المرايا العاكسة الداخلية -->
                                 <!-- المرايا العاكسة الداخلية -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="miroirs_reflecteurs_internes" class="form-label">المرايا العاكسة
                                             الداخلية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="miroirs_reflecteurs_internes[]"
                                             id="miroirs_reflecteurs_internes_exist" value="موجودة">
                                         <label for="miroirs_reflecteurs_internes_exist">موجودة</label>
@@ -746,12 +746,12 @@ ob_start();
                                 </div>
 
                                 <!-- المرايا العاكسة الامامية في اليمين -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="miroirs_reflecteurs_avant_droite" class="form-label">المرايا العاكسة
                                             الامامية في اليمين</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="miroirs_reflecteurs_avant_droite[]"
                                             id="miroirs_reflecteurs_avant_droite_exist" value="موجودة">
                                         <label for="miroirs_reflecteurs_avant_droite_exist">موجودة</label>
@@ -777,12 +777,12 @@ ob_start();
                                 </div>
 
                                 <!-- المرايا العاكسة الامامية في اليسار -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="miroirs_reflecteurs_avant_gauche" class="form-label">المرايا العاكسة
                                             الامامية في اليسار</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="miroirs_reflecteurs_avant_gauche[]"
                                             id="miroirs_reflecteurs_avant_gauche_exist" value="موجودة">
                                         <label for="miroirs_reflecteurs_avant_gauche_exist">موجودة</label>
@@ -808,11 +808,11 @@ ob_start();
                                 </div>
 
                                 <!-- ماسحة الزجاج الامامية -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="essuie_glace_avant" class="form-label">ماسحة الزجاج الامامية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="essuie_glace_avant[]" id="essuie_glace_avant_exist"
                                             value="موجودة">
                                         <label for="essuie_glace_avant_exist">موجودة</label>
@@ -835,11 +835,11 @@ ob_start();
                                 </div>
 
                                 <!-- أضواء المركبة -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="lumieres_vehicule" class="form-label">أضواء المركبة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="lumieres_vehicule[]" id="lumieres_vehicule_working"
                                             value="تشتغل">
                                         <label for="lumieres_vehicule_working">تشتغل</label>
@@ -857,12 +857,12 @@ ob_start();
                                 </div>
 
                                 <!-- زجاجة انعكاس الضوء الخلفية أو الجانبية -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="reflecteurs_arriere_ou_lateraux" class="form-label">زجاجة انعكاس
                                             الضوء الخلفية أو الجانبية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="reflecteurs_arriere_ou_lateraux[]"
                                             id="reflecteurs_arriere_ou_lateraux_exist" value="موجودة">
                                         <label for="reflecteurs_arriere_ou_lateraux_exist">موجودة</label>
@@ -878,12 +878,12 @@ ob_start();
                                 </div>
 
                                 <!-- منبه أضواء الضباب -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="signal_lumieres_brouillard" class="form-label">منبه أضواء
                                             الضباب</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="signal_lumieres_brouillard[]"
                                             id="signal_lumieres_brouillard_exist" value="موجودة">
                                         <label for="signal_lumieres_brouillard_exist">موجودة</label>
@@ -903,11 +903,11 @@ ob_start();
                                 </div>
 
                                 <!-- البنية الفوقية و الهيكل -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="etat_carosserie" class="form-label">البنية الفوقية و الهيكل</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="etat_carosserie[]" id="etat_carosserie_good"
                                             value="حالة جيدة">
                                         <label for="etat_carosserie_good">حالة جيدة</label>
@@ -927,12 +927,12 @@ ob_start();
                                 </div>
 
                                 <!-- مقعد حجرة القيادة -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="siege_cabine_conducteur" class="form-label">مقعد حجرة
                                             القيادة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="siege_cabine_conducteur[]"
                                             id="siege_cabine_conducteur_good" value="حالة جيدة">
                                         <label for="siege_cabine_conducteur_good">حالة جيدة</label>
@@ -954,11 +954,11 @@ ob_start();
                                 </div>
 
                                 <!-- مقعد المركبة -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="sieges_vehicule" class="form-label">مقاعد المركبة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="sieges_vehicule[]" id="siege_vehicule_good"
                                             value="حالة جيدة">
                                         <label for="siege_vehicule_good">حالة جيدة</label>
@@ -978,11 +978,11 @@ ob_start();
                                 </div>
 
                                 <!-- أحزمة السلامة -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="ceintures_securite" class="form-label">أحزمة السلامة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="ceintures_securite[]" id="ceinture_securite_good"
                                             value="موجودة">
                                         <label for="ceinture_securite_good">موجودة</label>
@@ -1005,11 +1005,11 @@ ob_start();
                                 </div>
 
                                 <!-- المنبه الصوتي -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="klaxon" class="form-label">المنبه الصوتي</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="klaxon[]" id="klaxon_good" value="يشتغل">
                                         <label for="klaxon_good">يشتغل</label>
                                         <input type="checkbox" name="klaxon[]" id="klaxon_not_working" value="لا يشتغل">
@@ -1020,11 +1020,11 @@ ob_start();
                                 </div>
 
                                 <!-- مطفأة الحريق -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="extincteur" class="form-label">مطفأة الحريق</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="extincteur[]" id="extincteur_good"
                                             value="حالة جيدة">
                                         <label for="extincteur_good">حالة جيدة</label>
@@ -1038,11 +1038,11 @@ ob_start();
                                 </div>
 
                                 <!-- علبة الاسعافات الاولية -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="trousse_secours" class="form-label">علبة الاسعافات الاولية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="trousse_secours[]" id="trousse_secours_good"
                                             value="حالة جيدة">
                                         <label for="trousse_secours_good">حالة جيدة</label>
@@ -1056,11 +1056,11 @@ ob_start();
                                 </div>
 
                                 <!-- أبواب المركبة -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="portes" class="form-label">أبواب المركبة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="portes[]" id="portes_good" value="حالة جيدة">
                                         <label for="portes_good">حالة جيدة</label>
                                         <input type="checkbox" name="portes[]" id="portes_bad" value="حالة سيئة">
@@ -1071,12 +1071,12 @@ ob_start();
                                 </div>
 
                                 <!-- نظام قفل الابواب الاوتوماتيكي -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="systeme_verrouillage_auto" class="form-label">نظام قفل الابواب
                                             الاوتوماتيكي</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="systeme_verrouillage_auto[]"
                                             id="systeme_verrouillage_auto_good" value="موجود">
                                         <label for="systeme_verrouillage_auto_good">موجود</label>
@@ -1098,11 +1098,11 @@ ob_start();
 
 
                                 <!-- الحالة الميكانيكية -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="etat_mecanique" class="form-label">الحالة الميكانيكية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="etat_mecanique[]" id="etat_mecanique_good"
                                             value="حالة جيدة">
                                         <label for="etat_mecanique_good">حالة جيدة</label>
@@ -1116,7 +1116,7 @@ ob_start();
                                 <div class="col-md-12 text-end">
                                     <h6> التوصيات الخاصة بالمركبة موضوع المراقبة </h6>
                                 </div>
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <textarea class="form-control" dir="rtl" name="recommandations_vehicule"
                                         id="recommandations_vehicule" rows="3"></textarea>
                                 </div>
@@ -1125,9 +1125,17 @@ ob_start();
                                 <div class="col-md-12 text-end">
                                     <h6> التوصيات الخاصة بالجولة الميدانية </h6>
                                 </div>
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <textarea class="form-control" dir="rtl" name="recommandations_groupe_field"
                                         id="recommandations_groupe_field" rows="3"></textarea>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-md-12 text-end">
+                                    <h6>ملفات</h6>
+                                </div>
+                                <div class="col-md-12 text-end d-flex  mb-2">
+                                    <input type="file" class="form-control" name="pieces_jointe[]" id="files" multiple>
                                 </div>
                             </div>
                             <div class="row mt-3">

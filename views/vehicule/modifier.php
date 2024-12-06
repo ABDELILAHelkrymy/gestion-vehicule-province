@@ -1,6 +1,6 @@
 <?php
 $date = date('Y-m-d');
-$title = $date . " : اليوم";
+$title = "اليوم : " .$date ;
 $route = explode('/', $_SERVER['REQUEST_URI'])[2] ?? '';
 ob_start();
 ?>
@@ -13,7 +13,7 @@ ob_start();
                         <div class="col-md-4 text-end">
                             <h5> <?= $vehicule->getNumVehicule() ?> تعديل بيانات المركبة</h5>
                         </div>
-                        <div class="col-md-8 text-end">
+                        <div class="col-md-8 text-start">
                             <h4 class="mb-0">
                                 <a href="/board" class="btn btn-primary"> رجوع </a>
                             </h4>
@@ -25,9 +25,10 @@ ob_start();
                         <form method="POST">
                             <div class="row d-flex justify-content-center">
                                 <div class="col-md-4 text-end">
-                                    <label for="heure_operation" class="form-label">وقت العملية</label>
-                                    <input type="time" class="form-control" name="heure_operation" id="heure_operation"
-                                        value="<?= $vehicule->getHeureOperation() ?>">
+                                    <label for="num_vehicule" class="form-label"><span class="text-danger">*</span>رقم
+                                        المركبة</label>
+                                    <input type="text" class="form-control" name="num_vehicule" id="num_vehicule"
+                                        value="<?= $vehicule->getNumVehicule() ?>" required>
                                 </div>
                                 <div class="col-md-4 text-end">
                                     <label for="date_operation" class="form-label">تاريخ العملية</label>
@@ -35,16 +36,15 @@ ob_start();
                                         value="<?= $vehicule->getDateOperation() ?>">
                                 </div>
                                 <div class="col-md-4 text-end">
-                                    <label for="num_vehicule" class="form-label"><span class="text-danger">*</span>رقم
-                                        المركبة</label>
-                                    <input type="text" class="form-control" name="num_vehicule" id="num_vehicule"
-                                        value="<?= $vehicule->getNumVehicule() ?>" required>
+                                    <label for="heure_operation" class="form-label">وقت العملية</label>
+                                    <input type="time" class="form-control" name="heure_operation" id="heure_operation"
+                                        value="<?= $vehicule->getHeureOperation() ?>">
                                 </div>
                             </div>
                             <?php
                             $typeVehiculeArray = ["النقل الحضري", "النقل المدرسي", "النقل بين الجماعات", "نقل المستخدمين لحساب الغير", "النقل بواسطة سيارة الاجرة"];
                             ?>
-                            <div class="row mt-3 d-flex justify-content-start flex-row-reverse">
+                            <div class="row mt-3 d-flex justify-content-start ">
                                 <div class="col-md-12 text-end">
                                     <h6>نوع سير المركبة</h6>
                                 </div>
@@ -74,7 +74,7 @@ ob_start();
                                     <input type="radio" name="type_vehicule" id="type_vehicule"
                                         value="النقل بواسطة سيارة الاجرة" <?= $vehicule->getTypeVehicule() == "النقل بواسطة سيارة الاجرة" ? 'checked' : '' ?>>
                                 </div>
-                                <div class="col-md-4 d-flex flex-row-reverse justify-content-around align-items-center">
+                                <div class="col-md-4 d-flex  justify-content-around align-items-center">
                                     <div>
                                         <label for="type_vehicule" class="form-label">اخر</label>
                                         <input type="radio" name="type_vehicule" id="type_vehicule_autre" value="اخر"
@@ -91,81 +91,81 @@ ob_start();
                                     <h6>الوثائق الخاصة بالمركبة </h6>
                                 </div>
                                 <div class="col-md-6 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
+                                    <div class="row ">
                                         <div class="col-md-6 text-end">
                                             <label for="carte_grise" class="form-label">البطاقة الرمادية</label>
                                             <input type="checkbox" name="carte_grise" id="carte_grise" value="1"
                                                 <?= $vehicule->getCarteGrise() == 1 ? 'checked' : '' ?>>
                                         </div>
                                         <div class="col-md-6 text-end d-flex">
+                                            <label for="observation_carte_grise" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_carte_grise"
                                                 value="<?= $vehicule->getObservationCarteGrise() ?>"
                                                 id="assuobservation_carte_griserance">
-                                            <label for="observation_carte_grise" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
+                                    <div class="row ">
                                         <div class="col-md-6 text-end">
                                             <label for="assurance" class="form-label">شهادة التأمين</label>
                                             <input type="checkbox" name="assurance" id="assurance" value="1"
                                                 <?= $vehicule->getAssurance() == 1 ? 'checked' : '' ?>>
                                         </div>
                                         <div class="col-md-6 text-end d-flex">
+                                            <label for="observation_assurance" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_assurance"
                                                 value="<?= $vehicule->getObservationAssurance() ?>"
                                                 id="observation_assurance">
-                                            <label for="observation_assurance" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
+                                    <div class="row ">
                                         <div class="col-md-6 text-end">
                                             <label for="visite_technique" class="form-label">شهادة الفحص التقني</label>
                                             <input type="checkbox" name="visite_technique" id="visite_technique"
                                                 value="1" <?= $vehicule->getVisiteTechnique() == 1 ? 'checked' : '' ?>>
                                         </div>
                                         <div class="col-md-6 text-end d-flex">
+                                            <label for="observation_visite_technique" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_visite_technique"
                                                 value="<?= $vehicule->getObservationVisiteTechnique() ?>"
                                                 id="observation_visite_technique">
-                                            <label for="observation_visite_technique" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
+                                    <div class="row ">
                                         <div class="col-md-6 text-end">
                                             <label for="taxe" class="form-label">وصل أداء الضريبة</label>
                                             <input type="checkbox" name="taxe" id="taxe" value="1"
                                                 <?= $vehicule->getTaxe() == 1 ? 'checked' : '' ?>>
                                         </div>
                                         <div class="col-md-6 text-end d-flex">
+                                            <label for="observation_taxe" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_taxe"
                                                 value="<?= $vehicule->getObservationTaxe() ?>" id="observation_taxe">
-                                            <label for="observation_taxe" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
+                                    <div class="row ">
                                         <div class="col-md-6 text-end">
                                             <label for="feulle_route" class="form-label">ورقة السير</label>
                                             <input type="checkbox" name="feulle_route" id="feulle_route" value="1"
                                                 <?= $vehicule->getFeulleRoute() == 1 ? 'checked' : '' ?>>
                                         </div>
                                         <div class="col-md-6 text-end d-flex">
+                                            <label for="observation_feulle_route" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_feulle_route"
                                                 value="<?= $vehicule->getObservationFeulleRoute() ?>"
                                                 id="observation_feulle_route">
-                                            <label for="observation_feulle_route" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
+                                    <div class="row ">
                                         <div class="col-md-6 text-end">
                                             <label for="contrat_ordre_transport" class="form-label">العقد مع الآمر
                                                 بالنقل</label>
@@ -174,12 +174,12 @@ ob_start();
                                                 <?= $vehicule->getContratOrdreTransport() == 1 ? 'checked' : '' ?>>
                                         </div>
                                         <div class="col-md-6 text-end d-flex">
+                                            <label for="observation_contrat_ordre_transport"
+                                                class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control"
                                                 name="observation_contrat_ordre_transport"
                                                 value="<?= $vehicule->getObservationContratOrdreTransport() ?>"
                                                 id="observation_contrat_ordre_transport">
-                                            <label for="observation_contrat_ordre_transport"
-                                                class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
@@ -190,8 +190,8 @@ ob_start();
                                     <h6>بيانات المركبة</h6>
                                 </div>
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="matricule" class="form-label">رقم تسجيل المركبة</label>
                                             <input type="text" class="form-control w-60" name="matricule"
                                                 value="<?= $vehicule->getMatricule() ?>" id="matricule">
@@ -211,16 +211,16 @@ ob_start();
                                                 <?= $vehicule->getMatriculeConfirmeCartGrise() == 0 ? 'checked' : '' ?>>
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_matricule" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_matricule"
                                                 value="<?= $vehicule->getObservationMatricule() ?>"
                                                 id="observation_matricule">
-                                            <label for="observation_matricule" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="numero_chassis" class="form-label">رقم الإطار الحديدي</label>
                                             <input type="text" class="form-control w-60" name="numero_chassis"
                                                 value="<?= $vehicule->getNumeroChassis() ?>" id="numero_chassis">
@@ -240,17 +240,17 @@ ob_start();
                                                 <?= $vehicule->getNumeroChassisConfirmeCartGrise() == 0 ? 'checked' : '' ?>>
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_matricule" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_matricule"
                                                 value="<?= $vehicule->getObservationNumeroChassis() ?>"
                                                 id="observation_matricule">
-                                            <label for="observation_matricule" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="nom_fabricant" class="form-label">اسم المصنع</label>
                                             <input type="text" class="form-control w-60" name="nom_fabricant"
                                                 value="<?= $vehicule->getNomFabricant() ?>" id="nom_fabricant">
@@ -270,17 +270,17 @@ ob_start();
                                                 <?= $vehicule->getNomFabricantConfirmeCartGrise() == 0 ? 'checked' : '' ?>>
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_nom_fabricant" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_nom_fabricant"
                                                 value="<?= $vehicule->getObservationNomFabricant() ?>"
                                                 id="observation_nom_fabricant">
-                                            <label for="observation_nom_fabricant" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="modele" class="form-label">النموذج</label>
                                             <input type="text" class="form-control w-60" name="modele" id="modele"
                                                 value="<?= $vehicule->getModele() ?>">
@@ -300,16 +300,16 @@ ob_start();
                                                 <?= $vehicule->getModeleConfirmeCartGrise() == 0 ? 'checked' : '' ?>>
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_modele" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_modele"
                                                 value="<?= $vehicule->getObservationModele() ?>"
                                                 id="observation_modele">
-                                            <label for="observation_modele" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="nombre_siege" class="form-label">عدد المقاعد</label>
                                             <input type="text" class="form-control w-60" name="nombre_siege"
                                                 value="<?= $vehicule->getNombreSiege() ?>" id="nombre_siege">
@@ -329,17 +329,17 @@ ob_start();
                                                 <?= $vehicule->getNombreSiegeConfirmeCartGrise() == 0 ? 'checked' : '' ?>>
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_nombre_siege" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_nombre_siege"
                                                 value="<?= $vehicule->getObservationNombreSiege() ?>"
                                                 id="observation_nombre_siege">
-                                            <label for="observation_nombre_siege" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="proprietaire" class="form-label">اسم المالك</label>
                                             <input type="text" class="form-control w-60" name="proprietaire"
                                                 id="proprietaire" value="<?= $vehicule->getProprietaire() ?>">
@@ -359,17 +359,17 @@ ob_start();
                                                 <?= $vehicule->getProprietaireConfirmeCartGrise() == 0 ? 'checked' : '' ?>>
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_proprietaire" class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control" name="observation_proprietaire"
                                                 value="<?= $vehicule->getObservationProprietaire() ?>"
                                                 id="observation_proprietaire">
-                                            <label for="observation_proprietaire" class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-12 mb-2 text-end">
-                                    <div class="row flex-row-reverse">
-                                        <div class="col-md-4 text-end d-flex flex-row-reverse justify-content-around">
+                                    <div class="row ">
+                                        <div class="col-md-4 text-end d-flex  justify-content-around">
                                             <label for="adresse_proprietaire" class="form-label">عنوان المالك</label>
                                             <input type="text" class="form-control w-60" name="adresse_proprietaire"
                                                 id="adresse_proprietaire"
@@ -390,18 +390,18 @@ ob_start();
                                                 <?= $vehicule->getAdresseProprietaireConfirmeCartGrise() == 0 ? 'checked' : '' ?>>
                                         </div>
                                         <div class="col-md-4 text-end d-flex">
+                                            <label for="observation_adresse_proprietaire"
+                                                class="form-label">ملاحظات</label>
                                             <input type="text" class="form-control"
                                                 name="observation_adresse_proprietaire"
                                                 id="observation_adresse_proprietaire"
                                                 value="<?= $vehicule->getObservationAdresseProprietaire() ?>">
-                                            <label for="observation_adresse_proprietaire"
-                                                class="form-label">ملاحظات</label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row mt-3 flex-row-reverse">
+                            <div class="row mt-3 ">
                                 <div class="col-md-12 text-end">
                                     <h6>سائق المركبة </h6>
                                 </div>
@@ -467,17 +467,17 @@ ob_start();
                                 </div>
                             </div>
 
-                            <div class="row mt-3 flex-row-reverse">
+                            <div class="row mt-3 ">
                                 <div class="col-md-12 text-end">
                                     <h6>نقط المعاينة التي تمت مراقبتها </h6>
                                 </div>
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="conformite_type_vehicule" class="form-label">تطابق بين مواصفات
                                             المركبة و
                                             نوع السير المسجل </label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="radio" name="conformite_type_vehicule"
                                             id="conformite_type_vehicule" value="نعم"
                                             <?= $vehicule->getConformiteTypeVehicule() == "نعم" ? 'checked' : '' ?>>
@@ -495,13 +495,13 @@ ob_start();
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="conformite_nombre_places" class="form-label">تطابق عدد المقاعد مع
                                             وثائق
                                             المركبة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="radio" name="conformite_nombre_places"
                                             id="conformite_nombre_places" value="نعم"
                                             <?= $vehicule->getConformiteNombrePlaces() == "نعم" ? 'checked' : '' ?>>
@@ -519,11 +519,11 @@ ob_start();
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="etat_roues_avant" class="form-label">العجلات الأمامية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="radio" name="etat_roues_avant" id="etat_roues_avant"
                                             value="حالة جيدة" <?= $vehicule->getEtatRouesAvant() == "حالة جيدة" ? 'checked' : '' ?>>
                                         <label for="etat_roues_avant">حالة جيدة</label>
@@ -538,11 +538,11 @@ ob_start();
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="etat_roues_arriere" class="form-label">العجلات الخلفية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="radio" name="etat_roues_arriere" id="etat_roues_arriere"
                                             value="حالة جيدة" <?= $vehicule->getEtatRouesArriere() == "حالة جيدة" ? 'checked' : '' ?>>
                                         <label for="etat_roues_arriere">حالة جيدة</label>
@@ -557,11 +557,11 @@ ob_start();
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="roue_secours" class="form-label">العجلة الاحتياطية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="roue_secours[]" id="roue_secours" value="موجودة"
                                             <?= $vehicule->getRoueSecours() !== null && in_array("موجودة", explode(",", $vehicule->getRoueSecours())) ? 'checked' : '' ?>>
                                         <label for="roue_secours">موجودة </label>
@@ -581,12 +581,12 @@ ob_start();
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="vitre_protection_avant" class="form-label"> الزجاجة الواقية الأمامية
                                         </label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="vitre_protection_avant[]"
                                             id="vitre_protection_avant_good" value="حالة جيدة"
                                             <?= $vehicule->getVitreProtectionAvant() !== null && in_array("حالة جيدة", explode(",", $vehicule->getVitreProtectionAvant())) ? 'checked' : '' ?>>
@@ -620,11 +620,11 @@ ob_start();
                                     </div>
                                 </div>
 
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="fenetre_secours" class="form-label">نوافذ الإغاثة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="fenetre_secours[]" id="fenetre_secours_exist"
                                             value="موجودة" <?= $vehicule->getFenetreSecours() !== null && in_array("موجودة", explode(",", $vehicule->getFenetreSecours())) ? 'checked' : '' ?>>
                                         <label for="fenetre_secours_exist">موجودة</label>
@@ -656,12 +656,12 @@ ob_start();
                                 </div>
 
                                 <!-- التجهيزات الزجاجية الأخرى الأمامية في اليمين -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="equipement_vitres_avant_droite" class="form-label">التجهيزات
                                             الزجاجية الأخرى الأمامية في اليمين</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="equipement_vitres_avant_droite[]"
                                             id="equipement_vitres_avant_droite_exist" value="موجودة"
                                             <?= $vehicule->getEquipementVitresAvantDroite() !== null && in_array("موجودة", explode(",", $vehicule->getEquipementVitresAvantDroite())) ? 'checked' : '' ?>>
@@ -694,12 +694,12 @@ ob_start();
                                 </div>
 
                                 <!-- التجهيزات الزجاجية الأخرى الأمامية في اليسار -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="equipement_vitres_avant_gauche" class="form-label">التجهيزات
                                             الزجاجية الأخرى الأمامية في اليسار</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="equipement_vitres_avant_gauche[]"
                                             id="equipement_vitres_avant_gauche_exist" value="موجودة"
                                             <?= $vehicule->getEquipementVitresAvantGauche() !== null && in_array("موجودة", explode(",", $vehicule->getEquipementVitresAvantGauche())) ? 'checked' : '' ?>>
@@ -733,12 +733,12 @@ ob_start();
 
                                 <!-- التجهيزات الزجاجية الأخرى الخلفية في اليمين -->
                                 <!-- التجهيزات الزجاجية الأخرى الخلفية في اليمين -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="equipement_vitres_arriere_droite" class="form-label">التجهيزات
                                             الزجاجية الأخرى الخلفية في اليمين</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="equipement_vitres_arriere_droite[]"
                                             id="equipement_vitres_arriere_droite_exist" value="موجودة"
                                             <?= $vehicule->getEquipementVitresArriereDroite() !== null && in_array("موجودة", explode(",", $vehicule->getEquipementVitresArriereDroite())) ? 'checked' : '' ?>>
@@ -771,12 +771,12 @@ ob_start();
                                 </div>
 
                                 <!-- التجهيزات الزجاجية الأخرى الخلفية في اليسار -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="equipement_vitres_arriere_gauche" class="form-label">التجهيزات
                                             الزجاجية الأخرى الخلفية في اليسار</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="equipement_vitres_arriere_gauche[]"
                                             id="equipement_vitres_arriere_gauche_exist" value="موجودة"
                                             <?= $vehicule->getEquipementVitresArriereGauche() !== null && in_array("موجودة", explode(",", $vehicule->getEquipementVitresArriereGauche())) ? 'checked' : '' ?>>
@@ -811,12 +811,12 @@ ob_start();
 
                                 <!-- المرايا العاكسة الداخلية -->
                                 <!-- المرايا العاكسة الداخلية -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="miroirs_reflecteurs_internes" class="form-label">المرايا العاكسة
                                             الداخلية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="miroirs_reflecteurs_internes[]"
                                             id="miroirs_reflecteurs_internes_exist" value="موجودة">
                                         <?= $vehicule->getMiroirsReflecteursInternes() !== null && in_array("موجودة", explode(",", $vehicule->getMiroirsReflecteursInternes())) ? 'checked' : '' ?>
@@ -849,12 +849,12 @@ ob_start();
                                 </div>
 
                                 <!-- المرايا العاكسة الامامية في اليمين -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="miroirs_reflecteurs_avant_droite" class="form-label">المرايا العاكسة
                                             الامامية في اليمين</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="miroirs_reflecteurs_avant_droite[]"
                                             id="miroirs_reflecteurs_avant_droite_exist" value="موجودة"
                                             <?= $vehicule->getMiroirsReflecteursAvantDroite() !== null && in_array("موجودة", explode(",", $vehicule->getMiroirsReflecteursAvantDroite())) ? 'checked' : '' ?>>
@@ -887,12 +887,12 @@ ob_start();
                                 </div>
 
                                 <!-- المرايا العاكسة الامامية في اليسار -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="miroirs_reflecteurs_avant_gauche" class="form-label">المرايا العاكسة
                                             الامامية في اليسار</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="miroirs_reflecteurs_avant_gauche[]"
                                             id="miroirs_reflecteurs_avant_gauche_exist" value="موجودة"
                                             <?= $vehicule->getMiroirsReflecteursAvantGauche() !== null && in_array("موجودة", explode(",", $vehicule->getMiroirsReflecteursAvantGauche())) ? 'checked' : '' ?>>
@@ -925,11 +925,11 @@ ob_start();
                                 </div>
 
                                 <!-- ماسحة الزجاج الامامية -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="essuie_glace_avant" class="form-label">ماسحة الزجاج الامامية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="essuie_glace_avant[]" id="essuie_glace_avant_exist"
                                             value="موجودة" <?= $vehicule->getEssuieGlaceAvant() !== null && in_array("موجودة", explode(",", $vehicule->getEssuieGlaceAvant())) ? 'checked' : '' ?>>
                                         <label for="essuie_glace_avant_exist">موجودة</label>
@@ -955,11 +955,11 @@ ob_start();
                                 </div>
 
                                 <!-- أضواء المركبة -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="lumieres_vehicule" class="form-label">أضواء المركبة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="lumieres_vehicule[]" id="lumieres_vehicule_working"
                                             value="تشتغل" <?= $vehicule->getLumieresVehicule() !== null && in_array("تشتغل", explode(",", $vehicule->getLumieresVehicule())) ? 'checked' : '' ?>>
                                         <label for="lumieres_vehicule_working">تشتغل</label>
@@ -979,12 +979,12 @@ ob_start();
                                 </div>
 
                                 <!-- زجاجة انعكاس الضوء الخلفية أو الجانبية -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="reflecteurs_arriere_ou_lateraux" class="form-label">زجاجة انعكاس
                                             الضوء الخلفية أو الجانبية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="reflecteurs_arriere_ou_lateraux[]"
                                             id="reflecteurs_arriere_ou_lateraux_exist" value="موجودة"
                                             <?= $vehicule->getReflecteursArriereOuLateraux() !== null && in_array("موجودة", explode(",", $vehicule->getReflecteursArriereOuLateraux())) ? 'checked' : '' ?>>
@@ -1003,12 +1003,12 @@ ob_start();
                                 </div>
 
                                 <!-- منبه أضواء الضباب -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="signal_lumieres_brouillard" class="form-label">منبه أضواء
                                             الضباب</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="signal_lumieres_brouillard[]"
                                             id="signal_lumieres_brouillard_exist" value="موجودة"
                                             <?= $vehicule->getSignalLumieresBrouillard() !== null && in_array("موجودة", explode(",", $vehicule->getSignalLumieresBrouillard())) ? 'checked' : '' ?>>
@@ -1033,11 +1033,11 @@ ob_start();
                                 </div>
 
                                 <!-- البنية الفوقية و الهيكل -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="etat_carosserie" class="form-label">البنية الفوقية و الهيكل</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="etat_carosserie[]" id="etat_carosserie_good"
                                             value="حالة جيدة" <?= $vehicule->getEtatCarosserie() !== null && in_array("حالة جيدة", explode(",", $vehicule->getEtatCarosserie())) ? 'checked' : '' ?>>
                                         <label for="etat_carosserie_good">حالة جيدة</label>
@@ -1058,12 +1058,12 @@ ob_start();
                                 </div>
 
                                 <!-- مقعد حجرة القيادة -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="siege_cabine_conducteur" class="form-label">مقعد حجرة
                                             القيادة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="siege_cabine_conducteur[]"
                                             id="siege_cabine_conducteur_good" value="حالة جيدة"
                                             <?= $vehicule->getSiegeCabineConducteur() !== null && in_array("حالة جيدة", explode(",", $vehicule->getSiegeCabineConducteur())) ? 'checked' : '' ?>>
@@ -1090,11 +1090,11 @@ ob_start();
                                 </div>
 
                                 <!-- مقعد المركبة -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="sieges_vehicule" class="form-label">مقاعد المركبة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="sieges_vehicule[]" id="siege_vehicule_good"
                                             value="حالة جيدة" <?= $vehicule->getSiegesVehicule() !== null && in_array("حالة جيدة", explode(",", $vehicule->getSiegesVehicule())) ? 'checked' : '' ?>>
                                         <label for="siege_vehicule_good">حالة جيدة</label>
@@ -1115,11 +1115,11 @@ ob_start();
                                 </div>
 
                                 <!-- أحزمة السلامة -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="ceintures_securite" class="form-label">أحزمة السلامة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="ceintures_securite[]" id="ceinture_securite_good"
                                             value="موجودة" <?= $vehicule->getCeinturesSecurite() !== null && in_array("موجودة", explode(",", $vehicule->getCeinturesSecurite())) ? 'checked' : '' ?>>
                                         <label for="ceinture_securite_good">موجودة</label>
@@ -1147,11 +1147,11 @@ ob_start();
                                 </div>
 
                                 <!-- المنبه الصوتي -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="klaxon" class="form-label">المنبه الصوتي</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="klaxon[]" id="klaxon_good" value="يشتغل"
                                             <?= $vehicule->getKlaxon() !== null && in_array("يشتغل", explode(",", $vehicule->getKlaxon())) ? 'checked' : '' ?>>
                                         <label for="klaxon_good">يشتغل</label>
@@ -1165,11 +1165,11 @@ ob_start();
                                 </div>
 
                                 <!-- مطفأة الحريق -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="extincteur" class="form-label">مطفأة الحريق</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="extincteur[]" id="extincteur_good"
                                             value="حالة جيدة" <?= $vehicule->getExtincteur() !== null && in_array("حالة جيدة", explode(",", $vehicule->getExtincteur())) ? 'checked' : '' ?>>
                                         <label for="extincteur_good">حالة جيدة</label>
@@ -1184,11 +1184,11 @@ ob_start();
                                 </div>
 
                                 <!-- علبة الاسعافات الاولية -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="trousse_secours" class="form-label">علبة الاسعافات الاولية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="trousse_secours[]" id="trousse_secours_good"
                                             value="حالة جيدة" <?= $vehicule->getTrousseSecours() !== null && in_array("حالة جيدة", explode(",", $vehicule->getTrousseSecours())) ? 'checked' : '' ?>>
                                         <label for="trousse_secours_good">حالة جيدة</label>
@@ -1203,11 +1203,11 @@ ob_start();
                                 </div>
 
                                 <!-- أبواب المركبة -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="portes" class="form-label">أبواب المركبة</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="portes[]" id="portes_good" value="حالة جيدة"
                                             <?= $vehicule->getPortes() !== null && in_array("حالة جيدة", explode(",", $vehicule->getPortes())) ? 'checked' : '' ?>>
                                         <label for="portes_good">حالة جيدة</label>
@@ -1221,12 +1221,12 @@ ob_start();
                                 </div>
 
                                 <!-- نظام قفل الابواب الاوتوماتيكي -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="systeme_verrouillage_auto" class="form-label">نظام قفل الابواب
                                             الاوتوماتيكي</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="systeme_verrouillage_auto[]"
                                             id="systeme_verrouillage_auto_good" value="موجود"
                                             <?= $vehicule->getSystemeVerrouillageAuto() !== null && in_array("موجود", explode(",", $vehicule->getSystemeVerrouillageAuto())) ? 'checked' : '' ?>>
@@ -1253,11 +1253,11 @@ ob_start();
 
 
                                 <!-- الحالة الميكانيكية -->
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <div class="col-md-4 text-end">
                                         <label for="etat_mecanique" class="form-label">الحالة الميكانيكية</label>
                                     </div>
-                                    <div class="col-md-8 d-flex flex-row-reverse text-end">
+                                    <div class="col-md-8 d-flex  text-end">
                                         <input type="checkbox" name="etat_mecanique[]" id="etat_mecanique_good"
                                             value="حالة جيدة" <?= $vehicule->getEtatMecanique() !== null && in_array("حالة جيدة", explode(",", $vehicule->getEtatMecanique())) ? 'checked' : '' ?>>
                                         <label for="etat_mecanique_good">حالة جيدة</label>
@@ -1271,7 +1271,7 @@ ob_start();
                                 <div class="col-md-12 text-end">
                                     <h6> التوصيات الخاصة بالمركبة موضوع المراقبة </h6>
                                 </div>
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <textarea class="form-control" dir="rtl" name="recommandations_vehicule"
                                         id="recommandations_vehicule" rows="3">
                                         <?= $vehicule->getRecommandationsVehicule() ?>
@@ -1282,11 +1282,53 @@ ob_start();
                                 <div class="col-md-12 text-end">
                                     <h6> التوصيات الخاصة بالجولة الميدانية </h6>
                                 </div>
-                                <div class="col-md-12 text-end d-flex flex-row-reverse mb-2">
+                                <div class="col-md-12 text-end d-flex  mb-2">
                                     <textarea class="form-control" dir="rtl" name="recommandations_groupe_field"
                                         id="recommandations_groupe_field" rows="3">
                                         <?= $vehicule->getRecommandationsGroupeField() ?>
                                     </textarea>
+                                </div>
+                            </div>
+                            <hr class="horizontal dark">
+                            <p class="text-uppercase text-sm">ملفات</p>
+                            <div class="row">
+                                <?php
+                                foreach ($attachements as $attachement) {
+                                    ?>
+                                    <div class="col-md-12 mb-1">
+                                        <ul class="list-group">
+                                            <li
+                                                class="list-group-item d-flex justify-content-between align-items-center text-success">
+                                                <div class="col-8">
+                                                    <?= basename($attachement) ?>
+                                                </div>
+                                                <!-- download piece_jointe pdf not as html -->
+                                                <div class="col-2">
+                                                    <a href="javascript:;"
+                                                        class="download-file btn btn-link text-dark d-flex text-sm mb-0 px-0 ms-4"
+                                                        data-file-name="<?= basename($attachement) ?>"
+                                                        data-file-path="<?= APP_ROOT . $attachement ?>">
+                                                        <i class='bx bx-download bx-flashing text-lg mx-1 mt-1'></i>
+                                                        <span>PDF</span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <?php
+                                }
+                                ?>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Pièce jointe</label>
+                                        <input class="form-control" id="file-input" name="pieces_jointe[]" type="file"
+                                            multiple>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <ul id="file-list" class="list-group"></ul>
+                                    </div>
                                 </div>
                             </div>
                             <?php

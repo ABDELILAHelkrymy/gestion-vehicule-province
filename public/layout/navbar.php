@@ -11,7 +11,14 @@
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
             <div class="ms-md-auto pe-md-3 d-flex align-items-center search-bar">
-
+                <form class="navbar-search form-inline d-flex">
+                    <div class="input-group">
+                        <input type="text" class="form-control border-radius-2xl" name="q" placeholder="رقم المركبة">
+                    </div>
+                    <button type="submit" class="btn btn-secondary my-2 my-sm-0 bg-gradient-primary border-radius-xl">
+                        <i class="bx bx-search text-white"></i>
+                    </button>
+                </form>
             </div>
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-flex align-items-center">
