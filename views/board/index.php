@@ -42,13 +42,6 @@ ob_start();
                                             <th
                                             class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2 text-center">
                                             نوع سير المركبة</th>
-                                        <th
-                                            class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2 text-center">
-                                            بيانات المركبة
-                                        </th>
-                                        <th
-                                            class="text-uppercase text-secondary text-sm font-weight-bolder opacity-7 ps-2 text-center">
-                                            الوثائق الخاصة بالمركبة </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -78,15 +71,6 @@ ob_start();
                                                     <?php echo $vehicule->getTypeVehicule(); ?>
                                                 </p>
                                             </td>
-                                            <td class="align-middle text-center">
-
-                                            </td>
-                                            <td class="align-middle text-center">
-
-                                            </td>
-                                            
-                                            
-                                            
                                         </tr>
                                         <?php
                                     }

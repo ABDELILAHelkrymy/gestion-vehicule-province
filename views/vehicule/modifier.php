@@ -22,7 +22,7 @@ ob_start();
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST">
+                        <form method="POST" enctype="multipart/form-data">
                             <div class="row d-flex justify-content-center">
                                 <div class="col-md-4 text-end">
                                     <label for="num_vehicule" class="form-label"><span class="text-danger">*</span>رقم
@@ -1294,6 +1294,7 @@ ob_start();
                             <div class="row">
                                 <?php
                                 foreach ($attachements as $attachement) {
+                                    if($attachement!=""){
                                     ?>
                                     <div class="col-md-12 mb-1">
                                         <ul class="list-group">
@@ -1317,12 +1318,12 @@ ob_start();
                                     </div>
                                     <?php
                                 }
+                                }
                                 ?>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Pièce jointe</label>
-                                        <input class="form-control" id="file-input" name="pieces_jointe[]" type="file"
-                                            multiple>
+                                        <input type="file" class="form-control" name="pieces_jointe[]" id="files" multiple>
                                     </div>
                                 </div>
                                 <div class="row">

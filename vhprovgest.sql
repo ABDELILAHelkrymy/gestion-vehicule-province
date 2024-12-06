@@ -36,7 +36,8 @@ CREATE TABLE
     FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
   ) ENGINE = InnoDB AUTO_INCREMENT = 1 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
-INSERT INTO `users` (`username`, `password`, `role_id`) VALUES ('gouve', '$2a$12$dcUz/DZSSLm4MXfaKOvSJe//AjFR4k7ITAASk5shMjUxXJb8.3zLK', 1), 
+INSERT INTO `users` (`username`, `password`, `role_id`) VALUES 
+('gouv', '$2y$10$nVGQshQKUvXjLMyUiL5Va.bVJJbgJG1a9snCJITHBN2gddRXyVpDe', 1), 
 ('user1', '$2a$12$B/bg63QOtgDQqoHCT.VoNeBaoMes3c7aZZISGQj8kt/6eLxhk/gS2', 2), 
 ('user2', '$2a$12$jhP5qmZCwQj9ZmCx4PJzVO2JEmS4RMheLccEWcXpBVtQsUTEimZ4G', 2);
 

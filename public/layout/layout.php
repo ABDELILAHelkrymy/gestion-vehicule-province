@@ -1,6 +1,19 @@
 <!DOCTYPE html>
+
+<?php
+$route = explode('/', $_SERVER['REQUEST_URI'])[1];
+if($route == 'auth'){
+?>
+
+<html lang="fr">
+<?php
+} else{
+?>
 <html lang="ar" dir="rtl">
 
+<?php
+} 
+?>
 <head>
     <meta charset="UTF-8" />
     <title>
